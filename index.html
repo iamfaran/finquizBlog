@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fin Quiz | Blog</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./imgs/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./aos/aos.css" />
+    <link rel="stylesheet" href="./fa/all.min.css" />
+    <style>
+      *,
+      ::after,
+      ::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      li:last-child {
+        margin-bottom: 30px;
+      }
+      body {
+        font-family: Lora, serif;
+      }
+      .nav-wrapper {
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+        background-color: #fff;
+        top: 0;
+        left: 0;
+      }
+      .logo {
+        height: 80px;
+        width: 150px;
+      }
+      .navlinks {
+        display: flex;
+      }
+      .navlinks li {
+        margin: 10px;
+      }
+      .navlinks li a {
+        color: #000;
+        padding: 15px 20px;
+        display: block;
+        letter-spacing: 2px;
+      }
+      .navlinks li a:hover {
+        color: #2196f3;
+      }
+      .burger-menu {
+        position: absolute;
+        left: 30px;
+        top: 45px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        display: none;
+      }
+      .burger-menu span {
+        transition: all 0.2s;
+      }
+      .burger-menu:hover span {
+        background-color: #2196f3;
+      }
+      .line {
+        height: 2px;
+        margin-bottom: 3px;
+        width: 20px;
+        background-color: #000;
+        display: block;
+      }
+      .toggle .line-1 {
+        transform: rotate(-45deg) translate(-1px, 3px);
+      }
+      .toggle .line-2 {
+        opacity: 0;
+      }
+      .toggle .line-3 {
+        transform: rotate(45deg) translate(-4px, -6px);
+      }
+      .shop-links li {
+        padding-left: 30px;
+        cursor: pointer;
+      }
+      .shop-links li a {
+        padding: 0;
+        display: block;
+        padding: 5px 0;
+      }
+      .shop-links li a:hover {
+        color: #fff;
+      }
+      .shop-links li:hover {
+        background-color: #2196f3;
+        color: #fff;
+      }
+      .accordian {
+        display: none;
+        margin-bottom: 30px;
+      }
+      .shop {
+        position: relative;
+      }
+      .arrow {
+        border: solid #000;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        position: absolute;
+        right: 0;
+        top: 20px;
+        transition: all 0.3s;
+        display: none;
+      }
+      .arrow.down {
+        transform: rotate(45deg);
+      }
+      .card-price::before {
+        content: "$";
+        font-size: 25px;
+        position: relative;
+        display: inline-block;
+        transform: translateY(-20px);
+      }
+      .dropdown {
+        background-color: #fff;
+        color: #000;
+        display: none;
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        top: 70%;
+      }
+      .dropdown li {
+        cursor: pointer;
+      }
+      .dropdown li a:hover {
+        color: #fff;
+        background-color: #2196f3;
+      }
+      .dropdown:hover,
+      .shop:hover + .dropdown {
+        display: block;
+      }
+      .text-white {
+        color: #fff;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+      a {
+        text-decoration: none;
+        display: inline-block;
+      }
+      .logo img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .h-100 {
+        height: 100%;
+      }
+      #sec-one {
+        padding-top: 150px;
+        padding-bottom: 100px;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url(imgs/guy-w-tab.webp);
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .sec-row {
+        display: flex;
+        justify-content: space-between;
+      }
+      .sec-col {
+        width: 33%;
+      }
+      .container.h-100 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .title-lg {
+        font-size: 57px;
+        margin-bottom: 20px;
+      }
+      .title-lg,
+      .title-md {
+        font-weight: 100;
+      }
+      .see-more-btn {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 15px 20px;
+        margin-top: 30px;
+        color: #000;
+        transition: background-color 0.5s, color 0.5s;
+      }
+      .see-more-btn:hover {
+        background-color: #00bcd4;
+        color: #fff;
+      }
+      #sec-two {
+        padding: 100px 0;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url(imgs/girl-w-laptop.webp);
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .sec-row-reverse {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+      }
+      #sec-three {
+        padding: 100px 0;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url(imgs/man-in-suit.webp);
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .info {
+        letter-spacing: 1px;
+      }
+      .text-dark {
+        color: #34343c;
+      }
+      #sec-four {
+        padding: 100px 0;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url(imgs/girl-w-accounts.webp);
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #sec-five {
+        padding: 100px 0;
+        background-color: snow;
+      }
+      .sec-title {
+        font-size: 30px;
+        font-weight: 100;
+        color: #34343c;
+        margin-bottom: 50px;
+      }
+      .program-cards {
+        display: flex;
+        justify-content: space-between;
+      }
+      .program-card {
+        flex-basis: 32%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        transition: all 0.3s cubic-bezier(0.7, 1, 0.7, 1);
+      }
+      .program-card-1:hover .card-img-border {
+        border: 5px solid #f6ba06;
+        transform: scale(1, 1);
+      }
+      .program-card-1:hover .card-img-bg::before {
+        background-color: #f6ba06;
+        transform: scale(1, 1);
+      }
+      .program-card-2:hover .card-img-border {
+        border: 5px solid #6ec4c8;
+        transform: scale(1, 1);
+      }
+      .program-card-2:hover .card-img-bg::before {
+        background-color: #6ec4c8;
+        transform: scale(1, 1);
+      }
+      .program-card-3:hover .card-img-border {
+        border: 5px solid #59667c;
+        transform: scale(1, 1);
+      }
+      .program-card-3:hover .card-img-bg::before {
+        background-color: #59667c;
+        transform: scale(1, 1);
+      }
+      .program-card > div {
+        margin-bottom: 30px;
+      }
+      .card-img-border {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        border: 5px solid transparent;
+        border-radius: 50%;
+        align-items: center;
+        transition: all 0.3s cubic-bezier(0.7, 1, 0.7, 1);
+      }
+      .card-img-bg {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+      .card-img-bg::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.3s;
+      }
+      .img-level {
+        display: block;
+        width: 100%;
+        position: relative;
+      }
+      .btn-yellow {
+        background-color: #f6ba06;
+      }
+      .btn-blue {
+        background-color: #6ec4c8;
+      }
+      .btn-black {
+        background-color: #59667c;
+      }
+      .card-yellow {
+        border: 10px solid #f6ba06;
+      }
+      .card-blue {
+        border: 10px solid #6ec4c8;
+      }
+      .card-black {
+        border: 10px solid #59667c;
+      }
+      .click-me {
+        display: inline-block;
+        height: 50px;
+        line-height: 60px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        color: #fff;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .label-up {
+        display: block;
+        height: 100%;
+        position: relative;
+        top: -25%;
+        transition: 0.3s;
+        padding: 10px 15px;
+      }
+      .click-me:hover .label-up {
+        top: -125%;
+      }
+      .card-title {
+        font-size: 26px;
+        text-align: center;
+      }
+      #sec-six {
+        padding: 100px 0;
+        background: linear-gradient(
+          to bottom,
+          #f0f9ff 0,
+          #cbebff 47%,
+          #a1dbff 100%
+        );
+      }
+      .text > p {
+        font-size: 16px;
+        line-height: 35px;
+      }
+      .sec-row > .text {
+        width: 48%;
+      }
+      .laptop-img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .img-wrap {
+        width: 100%;
+        height: 100%;
+      }
+      #sec-seven {
+        background-color: #d9f9ff;
+        height: auto;
+        padding: 100px 0;
+      }
+      .inner-title {
+        margin-bottom: 30px;
+        color: #34343c;
+        font-weight: 500;
+      }
+      .inner-text {
+        line-height: 20px;
+        letter-spacing: 1px;
+        color: #34343c;
+      }
+      .sec-row > .col {
+        flex: 1;
+        align-self: center;
+        padding: 0 20px;
+      }
+      .sec-row > .girl-img-box {
+        flex: 2;
+      }
+      #sec-eight {
+        padding-top: 100px;
+      }
+      .sample-btn {
+        border: 1px solid #00bcd4;
+        padding: 15px 30px;
+        color: #fff;
+        border-radius: 5px;
+        color: #00bcd4;
+        transition: background-color 0.5s, color 0.5s;
+      }
+      .sample-btn:hover {
+        background-color: #00bcd4;
+        color: #fff;
+      }
+      .row-2 {
+        display: flex;
+        margin-bottom: 30px;
+        margin-top: 30px;
+      }
+      .row-2 > div:not(.col-1) {
+        padding: 0 20px;
+      }
+      .check-now-title {
+        font-size: 30px;
+      }
+      .border-bottom {
+        position: relative;
+      }
+      .border-bottom::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 65px;
+        height: 1px;
+        background-color: #000;
+        bottom: -18px;
+        right: 50%;
+        transform: translateX(50%);
+      }
+      .check-now-info {
+        font-size: 20px;
+      }
+      .row-2 .col-1 {
+        align-self: center;
+      }
+      .row-2 .col-2 {
+        width: 40%;
+      }
+      .row-2 .col-3 {
+        align-self: center;
+      }
+      .like-img-wrap img {
+        width: 28px;
+        height: 30px;
+      }
+      .like-img-wrap {
+        border: 1px solid #000;
+        border-radius: 50%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .access-btn {
+        background-color: #f75706;
+        color: #fff;
+        padding: 15px 30px;
+        font-size: 20px;
+        border-radius: 5px;
+      }
+      .access-btn-wrap {
+        margin-top: 80px;
+      }
+      .access-btn:hover {
+        background-color: #02a870;
+      }
+      .check-now-title {
+        color: #00bcd4;
+        font-weight: 100;
+      }
+      #sec-nine {
+        height: auto;
+        padding: 100px 0;
+      }
+      .sec-heading-md {
+        font-size: 30px;
+        color: #2196f3;
+        font-weight: 100;
+        margin-bottom: 80px;
+      }
+      .study-pkg-image {
+        background-image: url(imgs/CFA-Complete-Study-Package-scaled.jpg);
+        height: auto;
+        background-position: 50% 35%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 100px 0;
+      }
+      .study-pkg-tagline {
+        color: #34343c;
+        font-size: 30px;
+        width: 40%;
+      }
+      .card-img span {
+        background-color: #00bcd4;
+        display: inline-block;
+        padding: 18px;
+      }
+      .card-img span i {
+        font-size: 30px;
+        color: #fff;
+      }
+      .text-blue {
+        color: #2196f3;
+      }
+      .card-heading {
+        font-size: 30px;
+        position: relative;
+      }
+      .card-heading::before {
+        content: "";
+        width: 70px;
+        height: 3px;
+        background-color: #00bcd4;
+        position: absolute;
+        bottom: -15px;
+      }
+      .study-pkg-card > div {
+        margin-bottom: 30px;
+      }
+      .study-pkg-card > div:last-child {
+        margin-top: 50px;
+      }
+      .study-pkg-card {
+        width: 350px;
+        padding: 0 15px;
+        color: #34343c;
+      }
+      .study-pkg-cards-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px 0;
+      }
+      .learn-more {
+        margin-top: 30px;
+        color: #00bcd4;
+      }
+      #sec-ten {
+        padding: 100px 0;
+        background: linear-gradient(
+          to right,
+          #46aef7 0,
+          #1dd5e6 83%,
+          #1dd5e6 100%
+        );
+      }
+      .congrats-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #3d1f01;
+        font-weight: 100;
+      }
+      .congrats-subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+        color: #3d1f01;
+      }
+      .congrats-info {
+        color: #605f5e;
+        margin-bottom: 30px;
+      }
+      #sec-eleven {
+        padding: 100px 0;
+      }
+      .gift {
+        font-size: 80px;
+        margin-bottom: 20px;
+      }
+      .gift i:hover {
+        color: #00bcd4;
+      }
+      .level-2-title {
+        font-size: 48px;
+        color: #34343c;
+        font-weight: 100;
+      }
+      .level-2-sub {
+        color: #00bcd4;
+        font-size: 24px;
+      }
+      .img-text-row {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .img-text-row > div {
+        flex: 1;
+        padding: 0 15px;
+      }
+      .level-2-cards > div {
+        margin-bottom: 20px;
+      }
+      .level-2-card-title {
+        font-size: 18px;
+        color: #00bcd4;
+        display: flex;
+      }
+      .level-2-card {
+        display: flex;
+      }
+      .level-2-card-text {
+        line-height: 25px;
+        color: #34343c;
+      }
+      .level-2-card-1:before {
+        color: #dbdbdb;
+        content: "\f109";
+        font-family: "Font Awesome 5 Free";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        margin-right: 30px;
+      }
+      .level-2-card-2:before {
+        color: #dbdbdb;
+        content: "\f004";
+        font-family: "Font Awesome 5 Free";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        margin-right: 30px;
+      }
+      .level-2-card-3:before {
+        color: #dbdbdb;
+        content: "\f005";
+        font-family: "Font Awesome 5 Free";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        margin-right: 30px;
+      }
+      .level-2-card-4:before {
+        color: #dbdbdb;
+        content: "\f0e8";
+        font-family: "Font Awesome 5 Free";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        margin-right: 30px;
+      }
+      .level-2-btn {
+        display: inline-block;
+        padding: 15px 20px;
+        background-color: #00bcd4;
+        color: #fff;
+        transition: background-color 0.5s;
+      }
+      .level-2-btn:hover {
+        background-color: rgba(0, 188, 212, 0.7);
+      }
+      #sec-12 {
+        padding: 100px 0;
+        position: relative;
+      }
+      #sec-12::before {
+        content: "";
+        clip-path: polygon(0 0, 100% 100%, 100% 0);
+        background-color: #8aebf4;
+        z-index: -1;
+        height: 100%;
+        width: 80%;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .prep-sub,
+      .prep-title {
+        color: #636161;
+      }
+      .prep-title {
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      .prep-sub {
+        letter-spacing: 1px;
+      }
+      .text-img-row {
+        display: flex;
+      }
+      .text-img-row > div {
+        flex: 1;
+      }
+      .text-img-row > div:first-child {
+        align-self: center;
+      }
+      #sec-13 {
+        padding: 100px 0;
+      }
+      .numbers-row {
+        display: flex;
+        justify-content: space-between;
+      }
+      .numbers-row > div {
+        flex: 1;
+        text-align: center;
+        padding: 0 50px;
+      }
+      .number {
+        font-size: 80px;
+        color: #00bcd4;
+      }
+      .number-text {
+        font-size: 30px;
+        color: #00bcd4;
+      }
+      #sec-14 {
+        padding: 100px 0;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url(imgs/girl-5.webp);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: #fff;
+      }
+      .level-3-title {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      .level-3-sub {
+        font-size: 17px;
+      }
+      .level-3-card {
+        padding: 0 30px;
+      }
+      .level-3-row-1,
+      .level-3-row-2 {
+        display: flex;
+      }
+      .level-3-row-1 {
+        margin-top: 60px;
+        margin-bottom: 30px;
+        justify-content: flex-end;
+      }
+      .level-3-row-2 {
+        justify-content: flex-end;
+        margin-bottom: 40px;
+      }
+      .level-3-row-1 > div {
+        width: 25%;
+      }
+      .level-3-row-2 > div {
+        width: 25%;
+      }
+      .level-3-card-title {
+        font-size: 22px;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .level-3-btn {
+        display: inline-block;
+        padding: 15px 20px;
+        background-color: #fff;
+        color: #616161;
+        transition: background-color 0.5s;
+      }
+      .level-3-btn:hover {
+        background-color: rgba(255, 255, 255, 0.85);
+      }
+      footer {
+        background-color: #020f29;
+      }
+      .email {
+        background-color: #09112e;
+        padding: 10px;
+        color: #cff;
+      }
+      .footer-row-bg {
+        background-color: #1f2d5d;
+        color: #ccc;
+      }
+      p span a {
+        color: #2196f3;
+      }
+      .footer-row {
+        display: flex;
+        padding: 30px;
+      }
+      .institute-info {
+        font-size: 14px;
+        width: 80%;
+      }
+      @media (max-width: 992px) {
+        .study-pkg-cards-row {
+          flex-direction: column;
+          align-items: center;
+        }
+        .study-pkg-card {
+          width: 80%;
+          text-align: center;
+          padding: 10px;
+        }
+        .img-text-row {
+          flex-direction: column;
+          align-items: center;
+        }
+        .img-text-row > div {
+          width: 80%;
+          margin-bottom: 50px;
+        }
+        #sec-12::before {
+          width: 100vh;
+        }
+        .text-img-row {
+          flex-direction: column;
+          align-items: center;
+        }
+        .text-img-row > div:last-child {
+          text-align: center;
+          margin-top: 30px;
+        }
+        .numbers-row {
+          flex-direction: column;
+          align-items: center;
+        }
+        .numbers-row > div {
+          width: 80%;
+          margin-bottom: 30px;
+        }
+        .level-3-row-1,
+        .level-3-row-2 {
+          flex-direction: column;
+          align-items: center;
+        }
+        .level-3-row-1 {
+          margin-bottom: 0;
+        }
+        .level-3-row-1 > div,
+        .level-3-row-2 > div {
+          width: 80%;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+      }
+      @media (max-width: 938px) {
+        #sec-four,
+        #sec-one,
+        #sec-three,
+        #sec-two {
+          height: auto;
+        }
+        .sec-row,
+        .sec-row-reverse {
+          flex-direction: column;
+          align-items: center;
+        }
+        .sec-row-reverse > div,
+        .sec-row > div {
+          width: 80%;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        .program-cards {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .program-cards > div {
+          width: 80%;
+          margin-bottom: 30px;
+        }
+        .row-2 {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+        .row-2 > div:not(.col-1) {
+          margin-bottom: 30px;
+          padding: 0;
+        }
+        .row-2 .col-2 {
+          width: 80%;
+        }
+      }
+      @media (max-width: 880px) {
+        .nav-wrapper {
+          justify-content: center;
+        }
+        .burger-menu {
+          display: block;
+        }
+        .nav-wrapper {
+          flex-direction: column;
+        }
+        .navlinks {
+          flex-direction: column;
+          width: 100%;
+          display: none;
+        }
+        .navlinks > li {
+          border-top: 1px solid #ebeef6;
+          margin: 0;
+          padding: 5px;
+        }
+        .navlinks.show {
+          display: block;
+          transition: all 2s;
+        }
+        .accordian.show {
+          display: block;
+        }
+        .arrow {
+          display: block;
+        }
+        .dropdown:hover,
+        .shop:hover + .dropdown {
+          display: none;
+        }
+      }
+      @media (max-width: 768px) {
+        .footer-row {
+          flex-direction: column;
+          padding: 5px;
+        }
+        .institute-info {
+          margin-bottom: 20px;
+        }
+        .title-lg {
+          font-size: 48px;
+        }
+        .sec-row > .text {
+          width: 80%;
+        }
+        .text > p {
+          line-height: 30px;
+        }
+      }
+      @media (max-width: 550px) {
+        .sec-row-reverse > div,
+        .sec-row > div {
+          width: 100%;
+        }
+        .title-lg {
+          font-size: 40px;
+        }
+        .title-md {
+          font-size: 25px;
+        }
+        .program-cards > div {
+          width: 100%;
+        }
+        .sec-row > .text {
+          width: 100%;
+        }
+        .study-pkg-card {
+          width: 100%;
+        }
+        .img-text-row > div {
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        .numbers-row > div {
+          width: 100%;
+          margin-bottom: 30px;
+          padding: 0 15px;
+        }
+        .number {
+          font-size: 50px;
+        }
+        .level-3-row-1 > div,
+        .level-3-row-2 > div {
+          width: 100%;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+      }
+      @media (max-width: 350px) {
+        .title-lg {
+          font-size: 30px;
+        }
+        .container {
+          padding: 0 15px;
+        }
+        .title-md {
+          font-size: 20px;
+        }
+        .level-2-card-text {
+          line-height: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ************************************navbar starts**************************** -->
+    <div class="nav-wrapper">
+      <div class="burger-menu">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+      </div>
+      <div>
+        <a href="#" class="logo"><img src="./imgs/logo.webp" alt="" /></a>
+      </div>
+      <ul class="navlinks">
+        <li class="nav-link"><a href="#">LOG IN</a></li>
+        <li class="nav-link"><a href="#">CREATE AN ACCOUNT</a></li>
+        <li class="nav-link"><a href="#">PRODUCTS</a></li>
+        <li class="shop nav-link">
+          <a href="#">SHOP</a> <i class="arrow right"></i>
+        </li>
+        <div class="dropdown">
+          <ul>
+            <li><a href="#"> LEVEL I</a></li>
+            <li><a href="#"> LEVEL II</a></li>
+            <li><a href="#"> LEVEL III</a></li>
+          </ul>
+        </div>
+
+        <div class="accordian">
+          <ul class="shop-links">
+            <li><a href="#"> LEVEL I</a></li>
+            <li><a href="#"> LEVEL II</a></li>
+            <li><a href="#"> LEVEL III</a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+    <!-- *************************************navbar ends**************************************** -->
+
+    <!-- *****************Section one starts here ********* -->
+    <div id="sec-one">
+      <div class="container h-100">
+        <div class="sec-row text-white">
+          <div class="sec-col">
+            <div class="sec-content-box-left">
+              <h1
+                class="title-lg"
+                data-aos="fade-right"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+              >
+                Computer based mock exams
+              </h1>
+              <h1
+                class="title-md"
+                data-aos="fade-right"
+                data-aos-delay="500"
+                data-aos-duration="1000"
+              >
+                Get the edge by practicing simulated practice exams!
+              </h1>
+              <a
+                href="#"
+                class="see-more-btn"
+                data-aos="fade-right"
+                data-aos-delay="1000"
+                data-aos-duration="1000"
+              >
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="sec-col">
+            <div class="sec-content-box-right">
+              <p class="info">
+                What keeps your from failing? More efforts...no. That won't be
+                enough. You need to practice updated mock exams with the new
+                format. Assess your preparedness by practicing these online
+                exams. Adjust your efforts based on feedback. Learning concepts
+                is necessary but not sufficient for passing the exam. You need
+                an actual exam like practice!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *********************************Section ends here **************** -->
+
+    <!-- *************Section 2 starts here ********** -->
+    <div id="sec-two">
+      <div class="container h-100">
+        <div class="sec-row-reverse text-white">
+          <div class="sec-col">
+            <div class="sec-content-box-left">
+              <h1
+                class="title-lg"
+                data-aos="fade-right"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+              >
+                Exam like Question Bank!
+              </h1>
+              <h1
+                class="title-md"
+                data-aos="fade-right"
+                data-aos-delay="500"
+                data-aos-duration="1000"
+              >
+                Get the edge by practicing simulated practice exams!
+              </h1>
+              <a
+                href="#"
+                class="see-more-btn"
+                data-aos="fade-right"
+                data-aos-delay="1000"
+                data-aos-duration="1000"
+              >
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="sec-col">
+            <div class="sec-content-box-right">
+              <p class="info">
+                Most tricky questions (not difficult) and detailed explanations
+                (you will fall in love with our answer explanations); a
+                revolutionary 'teaching by answer explanations approach!'
+                developed by Team FinQuiz and perfected over the last decade.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***********Section 2 ends here ************** -->
+
+    <!-- *************Section 3 starts here ********** -->
+    <div id="sec-three">
+      <div class="container h-100">
+        <div class="sec-row-reverse text-white">
+          <div class="sec-col">
+            <div class="sec-content-box-left">
+              <h1
+                class="title-lg"
+                data-aos="fade-right"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+              >
+                Chapter notes!
+              </h1>
+              <h1
+                class="title-md"
+                data-aos="fade-right"
+                data-aos-delay="500"
+                data-aos-duration="1000"
+              >
+                Superb tool to complement CFA Institute curriculum!
+              </h1>
+              <a
+                href="#"
+                class="see-more-btn"
+                data-aos="fade-right"
+                data-aos-delay="1000"
+                data-aos-duration="1000"
+              >
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="sec-col">
+            <div class="sec-content-box-right">
+              <p class="info">
+                Want to look at Apple's balance sheet or Microsoft's financial
+                statements? Want to read a joke about an economist, a chemist
+                and an engineer? It is all there in the official CFA curriculum!
+                But stop! Do not go in that amazing world of knowledge without
+                FinQuiz 2021 chapter notes. FinQuiz notes for level I, II and
+                III are excellent resources to reference as you cover the CFA
+                material. These will be your takeaways from that dive in amazing
+                books from CFA Institute. Download PDF files of FinQuiz 2021 CFA
+                exam chapter notes for Level I, II and III.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***********Section 3 ends here ************** -->
+
+    <!-- *************Section 4 starts here ********** -->
+    <div id="sec-four">
+      <div class="container h-100">
+        <div class="sec-row-reverse text-white">
+          <div class="sec-col">
+            <div class="sec-content-box-left">
+              <h1
+                class="title-lg"
+                data-aos="fade-right"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+              >
+                Right on target summaries...
+              </h1>
+              <h1
+                class="title-md"
+                data-aos="fade-right"
+                data-aos-delay="500"
+                data-aos-duration="1000"
+              >
+                key concepts, flow charts, formula highlights
+              </h1>
+              <a
+                href="#"
+                class="see-more-btn"
+                data-aos="fade-right"
+                data-aos-delay="1000"
+                data-aos-duration="1000"
+              >
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="sec-col">
+            <div class="sec-content-box-right">
+              <p class="info">
+                CFA exam day is approaching. Can you recall all ten topic areas?
+                Not sure about LIFO liquidation in financial reporting or
+                confusing total capital with total assets in corporate finance?
+                May be you need a quick re-check on SML vs CML in portfolio
+                management? Need to brush up on IFRS vs GAAP? Do you have to
+                re-read thousands of pages? You can do better than that. Grab
+                our flowchart style summaries and you are good to go! Download
+                PDF files now for 2021 CFA exam levels I, II and III.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***********Section 4 ends here ************** -->
+
+    <!-- Section 5 starts here ******* -->
+    <div id="sec-five">
+      <div class="container">
+        <h1 class="sec-title text-center">
+          Select Your CFA Program Exam Level
+        </h1>
+        <div class="program-cards">
+          <div class="program-card program-card-1 card-yellow">
+            <div class="card-img-border">
+              <div class="card-img-bg">
+                <img class="img-level" src="./imgs/level-1.webp" alt="" />
+              </div>
+            </div>
+            <div class="card-title">CFA Program Level I</div>
+            <div class="card-text">2021</div>
+            <div class="card-btn-wrap">
+              <a href="#" class="click-me btn-yellow">
+                <span class="label-up">Click me!</span>
+                <span class="label-up">Click me!</span>
+              </a>
+            </div>
+          </div>
+          <div class="program-card program-card-2 card-blue">
+            <div class="card-img-border">
+              <div class="card-img-bg">
+                <img class="img-level" src="./imgs/level-2.webp" alt="" />
+              </div>
+            </div>
+            <div class="card-title">CFA Program Level II</div>
+            <div class="card-text">2021</div>
+            <div class="card-btn-wrap">
+              <a href="#" class="click-me btn-blue">
+                <span class="label-up">Click me!</span>
+                <span class="label-up">Click me!</span>
+              </a>
+            </div>
+          </div>
+          <div class="program-card program-card-3 card-black">
+            <div class="card-img-border">
+              <div class="card-img-bg">
+                <img class="img-level" src="./imgs/level-3.webp" alt="" />
+              </div>
+            </div>
+            <div class="card-title">CFA Program Level III</div>
+            <div class="card-text">2021</div>
+            <div class="card-btn-wrap">
+              <a href="#" class="click-me btn-black">
+                <span class="label-up">Click me!</span>
+                <span class="label-up">Click me!</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section 5 ends here ********** -->
+    <!-- **************Section 6 starts here ********* -->
+    <div id="sec-six">
+      <div class="container">
+        <h1 class="sec-title text-center">
+          Why Chartered Financial Analyst® exam prep products by FinQuiz?
+        </h1>
+        <div class="sec-row">
+          <div class="text text-left">
+            <p>
+              FinQuiz is created and staffed by former CFA test-takers. We know
+              the ins-and-outs of CFA test-taking, and we want to ensure every
+              hard-working student has an opportunity to pass the exam.
+            </p>
+          </div>
+          <div class="text text-right">
+            <p>
+              At FinQuiz, you can expect more than just a sloppy study sheet.You
+              will quickly discover why our exam materials are the most
+              sought-after in the nation.
+            </p>
+          </div>
+        </div>
+        <div
+          class="img-wrap"
+          data-aos="slide-up"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-offset="300"
+        >
+          <img class="laptop-img" src="./imgs/laptop.webp" alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- *****************Section 6 ends here -->
+
+    <!-- ********Section 7 starts here ********** -->
+    <div id="sec-seven">
+      <div class="container">
+        <div class="sec-row">
+          <div class="col title-and-tl">
+            <h1 class="inner-title">
+              Level I books, study guides and notes for quick review of
+              textbooks in CFA exam prep
+            </h1>
+            <p class="inner-text">
+              Passing CFA Level I is the first step towards becoming an
+              officiated CFA Charterholder. Do not treat it lightly! It is
+              certainly true that Level I is the easiest exam relative to the
+              exam levels II and III. The key word here is relative. Level I
+              preparation is an arduous task in its own right, and it being the
+              easier of the three should not convince you it will be a cakewalk!
+            </p>
+          </div>
+          <div class="col girl-img-box">
+            <img src="./imgs/girl-w-glasses.webp" alt="" />
+          </div>
+          <div class="col title-and-tr">
+            <h1 class="inner-title">
+              Why you need CFA study guide for Chartered Financial Analyst
+              study?
+            </h1>
+            <p class="inner-text">
+              Consider the scope of the study material - level I: the
+              fundamental ethics and professional standards, as well as a
+              laundry list of financial topics, like equity, economics,
+              portfolio management and so, so much more. The official CFA
+              curriculum clocks in at approximately 3000 pages of material, so
+              much you could study it for a year and still not master it. You
+              only have a limited amount of time for Level I exam preparation,
+              so every second counts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ************Section 7 ends here ************* -->
+
+    <!-- !section 8 starts here -->
+    <section id="sec-eight">
+      <div class="container">
+        <h1 class="sec-title text-center">
+          Preparation with FinQuiz CFA exam Level 1 study material can save your
+          time!
+        </h1>
+        <p class="info text-dark">
+          While you will need a full and total reading of all official level I
+          textbooks to pass, it is practically impossible to read through
+          textbook twice, let alone read through it enough to absorb all the key
+          concepts. To excel, you need supplementary materials and study program
+          to guide your focus and efforts for level I. This is why FinQuiz is
+          such a fantastic tool for serious students. We supplement every LOS of
+          official curriculum with helpful notes, formula sheets, summaries and
+          other CFA study material to ensure a comprehensive understanding of
+          everything you need to know.
+        </p>
+        <div class="row-2">
+          <div class="col-1 like-img-wrap">
+            <img src="./imgs/thumb.webp" alt="" />
+          </div>
+          <div class="col-2 checknow-wrap">
+            <h1 class="check-now-title">CFA Level I Products</h1>
+            <p class="check-now-info">
+              Consider just some of what we offer in our Level I study material
+              and download free CFA study material PDFs.
+            </p>
+          </div>
+          <div class="col-3 sample-summary-btn-wrap">
+            <a href="#" class="sample-btn">Download Samples</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ! section 8 ends here -->
+    <!-- *********** Section 9 starts here ******* -->
+    <div id="sec-nine">
+      <div class="container">
+        <div class="study-pkg-cards-row">
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="far fa-gem"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">CFA Level 1 Question Bank</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                The Level I exams may be easier, but they are certainly not
+                easy. Official CFA exams are more than just a list of questions:
+                there is specific timing, style and procedure you will have to
+                undergo when taking your exam. That is why we constructed our
+                CFA level 1 question bank to accurately mimic the flow and
+                length of the official exam, so you are fully mentally and
+                emotionally prepared for the actual test. Sitting down to a
+                heaping bowl of exam questions is probably not your favorite
+                dish, but it will get you closer to that charter. We are here to
+                help. Want to learn more? Read: How to remember 90% of what you
+                studied for CFA exam?
+              </p>
+              <a href="#" class="learn-more">LEARN MORE</a>
+            </div>
+          </div>
+
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="fas fa-layer-group"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">CFA Level 1 Mock exams</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                The Level I exams may be easier, but they are certainly not
+                easy. Official CFA exams are more than just a list of questions:
+                there is specific timing, style and procedure you will have to
+                undergo when taking your exam. That is why we constructed our
+                CFA Level 1 mock exam to accurately mimic the flow and length of
+                the official exam, so you are fully mentally and emotionally
+                prepared for the actual test.
+              </p>
+              <a href="#" class="learn-more">LEARN MORE</a>
+            </div>
+          </div>
+
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="fas fa-list-ul"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">CFA level 1 notes</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                Our CFA curriculum chapter notes are the best on the market, bar
+                none. Designed to supplement, not replace, your Level I study
+                materials, these notes will reinforce what you need to know so
+                you are more fully prepared for the exam. You would not need
+                extra study guides from anyone else: you will find our notes
+                fully cover it all.
+              </p>
+              <a href="#" class="learn-more">LEARN MORE</a>
+            </div>
+          </div>
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="far fa-lightbulb"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">CFA Level 1 Summary Notes</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                3000 pages is a lot of material to study, and you only have so
+                much time. To properly study for the CFA, you need to condense
+                the less critical aspects so you can focus on what truly
+                matters. Our summaries are constructed by experienced CFA
+                test-takers and administrators, so that our summations are
+                comprehensive on what will be tested to the minute detail, and
+                relatively light on the less important materials.
+              </p>
+              <a href="#" class="learn-more">LEARN MORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***************** Section 9 ends here ********** -->
+    <!-- *****************Section 10 starts here ********** -->
+    <div id="sec-ten">
+      <div class="container">
+        <h1 class="congrats-title text-center">
+          Congratulations on passing Level I of the CFA Program Exam!
+        </h1>
+        <h1 class="congrats-subtitle text-center">
+          Take a bit to celebrate, but now is the time to get cracking on
+          tackling the Level II exam.
+        </h1>
+        <div class="sec-row">
+          <div class="text text-left congrats-info">
+            <p>
+              Luckily, your experience with Level I has already given you some
+              understanding of just how difficult this will be! Why choose
+              FinQuiz for CFA Level 2? Whereas Level I was your fundamentals,
+              Level II can be considered the more detail-oriented focus on the
+              more complex and professional topics, like fixed income, financial
+              statement analysis, and so much more. Just like Level I, CFA
+              Institute’s curriculum for Level II can reach nearly 3,000 pages,
+              but be warned: these materials are much more difficult to
+              understand.
+            </p>
+          </div>
+          <div class="text text-right congrats-info">
+            <p>
+              Level II is the essential next-step for achieving greatness in
+              your financial career. Without Level II, you cannot move on to
+              Level III or become an official CFA Charter holder. You have
+              worked so hard to get where you are today, but you will have to
+              double your efforts to achieve the prestigious designation you
+              desire. The road ahead is no easy one, but do not be discouraged.
+              You conquered Level I, which means you can conquer Level II too!
+              But do not go at it alone:
+            </p>
+          </div>
+        </div>
+        <h1 class="sec-title text-center text-dark">
+          FinQuiz’s widely appraised study guide materials will ensure you
+          receive the proper studying experience to excel on your Level II
+          examination.
+        </h1>
+        <div
+          class="img-wrap"
+          data-aos="slide-up"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-offset="300"
+        >
+          <img class="laptop-img" src="./imgs/girl-4.webp" alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- *************Section 10 ends here ****************** -->
+    <!-- **************Section 11 starts here ************ -->
+    <div id="sec-eleven">
+      <div class="container">
+        <div class="gift text-center">
+          <span><i class="fas fa-gift"></i></span>
+        </div>
+        <h1 class="level-2-title text-center">Level II</h1>
+        <h1 class="level-2-sub text-center">2021 CFA EXAM PRODUCTS</h1>
+        <div class="img-text-row">
+          <div class="img-col">
+            <img src="./imgs/guy-2.webp" alt="" />
+          </div>
+          <div class="text-col">
+            <div class="level-2-cards">
+              <div class="level-2-card level-2-card-1">
+                <div>
+                  <div class="level-2-card-title">
+                    Level II CFA Program Question Bank
+                  </div>
+                  <div class="level-2-card-text">
+                    The question sets in the Level II exam are radically
+                    different from the ones you were tested on in Level I. At
+                    Level II, you can expect a lengthy story accompanied by data
+                    and tables, after which you will have four to six questions
+                    to answer. Our question bank mimics hundreds of these
+                    questions, simulating what you can expect on the exam. This
+                    will fully prepare you for the scope and type of responses
+                    necessary to achieve excellence.
+                  </div>
+                </div>
+              </div>
+              <div class="level-2-card level-2-card-2">
+                <div>
+                  <div class="level-2-card-title">CFA Level 2 Mock Exams</div>
+                  <div class="level-2-card-text">
+                    Just as Level I exams are different from Level II in
+                    question format, so too are they different in timing and
+                    pacing. To fully prepare yourself mentally and emotionally
+                    for your exam, you need experience in exactly how the exam
+                    will be scheduled and conducted. Our mock exams will fully
+                    fortify your mind and spirit for what will be a grueling
+                    multiple hours.
+                  </div>
+                </div>
+              </div>
+              <div class="level-2-card level-2-card-3">
+                <div>
+                  <div class="level-2-card-title">
+                    CFA level 2 Chapter Notes
+                  </div>
+                  <div class="level-2-card-text">
+                    Our CFA curriculum chapter notes are the best on the market,
+                    bar none. Designed to supplement, not replace, your Level II
+                    study materials, these notes will reinforce what you need to
+                    know so you are more fully prepared for the exam. You would
+                    not need extra study guides from anyone else: you will find
+                    our notes fully cover it all.
+                  </div>
+                </div>
+              </div>
+              <div class="level-2-card level-2-card-4">
+                <div>
+                  <div class="level-2-card-title">
+                    FinQuiz CFA Level 2 Summary Notes
+                  </div>
+                  <div class="level-2-card-text">
+                    If you thought you need more succinct explanations for Level
+                    I materials, just wait till you start studying for Level II!
+                    While a rigorous reading of your official CFA curriculum is
+                    essential, our smart summaries will help condense complex
+                    topics like Financial Statement Analysis, Equity, and Fixed
+                    Income into a format that’s easier to understand and study.
+                    You’ll also have access to numerous flow charts, formula
+                    highlights and key concepts to increase your retention so
+                    that you can pass the Level II exam.
+                  </div>
+                </div>
+              </div>
+              <div class="level-2-btn-wrap text-center">
+                <a href="#" class="level-2-btn">Click me!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ************************Section 11 ends here ************* -->
+    <!-- *********************** Section 12 starts here ******************* -->
+    <div id="sec-12">
+      <div class="container">
+        <div class="text-img-row">
+          <div class="prep-materials">
+            <h1 class="prep-title">FinQuiz CFA Level 3 Prep Materials</h1>
+            <p class="prep-sub">
+              Fantastic work! Passing Level II is no easy task: now, you are
+              closer than ever to being a CFA Charter holder! What lies ahead is
+              CFA Level 3, which is by far the toughest level yet. Level III is
+              the definitive CFA exam: tough, gritty, and merciless. Levels I
+              and II were not easy, but compared to Level III they are
+              cakewalks. Every CFA charter holder will tell you just how
+              grueling passing the Level III exam was.
+            </p>
+          </div>
+          <div class="tab-img-box">
+            <img src="./imgs/tablet.webp" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- **************************Section 12 ends here ************* -->
+    <!-- **************Section 13 starts here **************** -->
+    <div id="sec-13">
+      <div class="container">
+        <div class="study-pkg-cards-row">
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="far fa-gem"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">the most prestigious title</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                Level III is not as voluminous as its Level I and II
+                counterparts, but what it loses in length it more than makes up
+                for in complexity. The CFA Charterholder designation is the most
+                prestigious title in finance for a reason: to get to it, you
+                have to pass the Level III exam first.
+              </p>
+            </div>
+          </div>
+
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="far fa-lightbulb"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">comprehensive studies</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                Intensive and comprehensive studying, training and
+                information-gathering is essential to conquering this portion of
+                the CFA exams. These exams are truly the great equalizer! The
+                best, and most successful CFA Program candidates do not just
+                study hard: they also supplement their materials with FinQuiz.
+                FinQuiz provides more than just summations and study guides.
+              </p>
+            </div>
+          </div>
+
+          <div class="study-pkg-card">
+            <div class="card-img">
+              <span><i class="fas fa-layer-group"></i></span>
+            </div>
+            <div class="card-heading-box">
+              <h1 class="card-heading text-dark">exam-like questions</h1>
+            </div>
+            <div class="card-body">
+              <p class="card-info">
+                We will fully prepare you for the intense essay-type format that
+                Level III is notorious for. Our first-class prep material will
+                guide you through Level III, offering materials, tools and
+                strategies that will maximize your potential for success on the
+                Level III exam. With your effort and our CFA exam-like
+                questions, detailed and clear summations, and concise yet
+                extensive curriculum notes, success is practically guaranteed.
+                Congratulations in advance, future CFA Charterholder!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="numbers-row">
+          <div class="number-col-1">
+            <div
+              class="number"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+            >
+              6
+            </div>
+            <div
+              class="number-text"
+              data-aos="fade-in"
+              data-aos-delay="1000"
+              data-aos-duration="1000"
+            >
+              Full Length Mock Exams
+            </div>
+          </div>
+          <div class="number-col-2">
+            <div
+              class="number"
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              5
+            </div>
+            <div
+              class="number-text"
+              data-aos="fade-in"
+              data-aos-delay="1300"
+              data-aos-duration="1000"
+            >
+              Additional Essay-type Exams
+            </div>
+          </div>
+          <div class="number-col-3">
+            <div
+              class="number"
+              data-aos="fade-up"
+              data-aos-delay="600"
+              data-aos-duration="1000"
+            >
+              3,000
+            </div>
+            <div
+              class="number-text"
+              data-aos="fade-in"
+              data-aos-delay="1600"
+              data-aos-duration="1000"
+            >
+              MCQs including item-sets and constructive response questions
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *****************Section 13 ends here ******************* -->
+
+    <!-- **************** sec 14 starts here ********************* -->
+    <div id="sec-14">
+      <div class="container">
+        <h1 class="level-3-title text-center">CFA Program Level III</h1>
+        <h1 class="level-3-sub text-center">Prep products for 2021</h1>
+        <div class="level-3-row-1">
+          <div class="level-3-card level-3-card-1">
+            <div class="level-3-card-title">
+              Level III CFA Program Question Bank
+            </div>
+            <div class="level-3-card-text">
+              Our question bank is a fantastic study tool; easily navigable, and
+              chock-full of tools like bookmarking, adding notes, and giving
+              feedback to the FinQuiz’s question developers, this study bank
+              will be an indispensable tool for preparation towards your Level
+              III exam.
+            </div>
+          </div>
+          <div class="level-3-card level-3-card-2">
+            <div class="level-3-card-title">CFA level 3 Chapter Notes</div>
+            <div class="level-3-card-text">
+              Designed to supplement your Level III study materials, our Chapter
+              Notes will reinforce what you need to know so you are more fully
+              prepared for the exam. You will find our notes fully cover it all.
+            </div>
+          </div>
+          <div class="level-3-card level-3-card-3">
+            <div class="level-3-card-title">FinQuiz CFA Level 3 Mock Exams</div>
+            <div class="level-3-card-text">
+              Our mock exams are formatted to mimic the time constraints and
+              length of the actual exam, so you can fully prepare yourself for
+              adequately allocating time towards construction of your essay and
+              item-sets.
+            </div>
+          </div>
+        </div>
+        <div class="level-3-row-2">
+          <div class="level-3-card level-3-card-4">
+            <div class="level-3-card-title">
+              Level III CFA Program Question Bank
+            </div>
+            <div class="level-3-card-text">
+              Our question bank is a fantastic study tool; easily navigable, and
+              chock-full of tools like bookmarking, adding notes, and giving
+              feedback to the FinQuiz’s question developers, this study bank
+              will be an indispensable tool for preparation towards your Level
+              III exam.
+            </div>
+          </div>
+          <div class="level-3-card level-3-card-5">
+            <div class="level-3-card-title">
+              FinQuiz CFA Level 3 Summary Notes
+            </div>
+            <div class="level-3-card-text">
+              Created by experienced CFA program teachers these summations will
+              properly outline and detail an overview of every topic in the
+              curriculum, complete with diagrams, bullet points and formulas.
+              Your chance of success will increase exponentially with the Level
+              III Summary at your disposal!
+            </div>
+          </div>
+        </div>
+        <div class="level-3-btn-wrap text-center">
+          <a href="#" class="level-3-btn">Click me!</a>
+        </div>
+      </div>
+    </div>
+    <!-- **************** sec 14 ends here *************************** -->
+    <!-- ************************************FOOTER STARTS************************************* -->
+    <footer>
+      <div class="container"></div>
+      <p class="email text-center">
+        For general inquiries, please write to us at
+        <span><a href="mailto:info@finquiz.com">info@finquiz.com</a></span> For
+        pre-sales inquiries, get in touch at
+        <span> <a href="mailto:sales@finquiz.com">sales@finquiz.com</a></span>
+      </p>
+      <div class="footer-row-bg">
+        <div class="container">
+          <div class="footer-row">
+            <div>
+              <p class="institute-info">
+                CFA Institute does not endorse, promote or warrant the accuracy
+                or quality of FinQuiz. CFA® and Chartered Financial Analyst® are
+                registered trademarks owned by CFA Institute. BA II Plus is
+                registered trademark owned by Texas Instruments.
+              </p>
+            </div>
+            <div>
+              <p>
+                Copyright © 2008-2020 FinQuiz:CFA Exam Prep. All rights
+                reserved.
+                <span
+                  ><a href="https://www.finquiz.com/terms-conditions/"
+                    >Terms and Conditions</a
+                  > </span
+                >|<span
+                  ><a href="https://www.finquiz.com/privacy-policy/"
+                    >Privacy Policy</a
+                  ></span
+                >
+                | info@finquiz.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- *****************************************FOOTER ENDS****************************** -->
+    <script src="./aos/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+      });
+    </script>
+    <script>
+      const burger = document.querySelector(".burger-menu");
+      const navMenu = document.querySelector(".navlinks");
+      const shop = document.querySelector(".shop");
+      const accordian = document.querySelector(".accordian");
+      const arrow = document.querySelector(".arrow");
+
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("toggle");
+        navMenu.classList.toggle("show");
+      });
+
+      shop.addEventListener("click", () => {
+        accordian.classList.toggle("show");
+        arrow.classList.toggle("down");
+      });
+    </script>
+  </body>
+</html>
